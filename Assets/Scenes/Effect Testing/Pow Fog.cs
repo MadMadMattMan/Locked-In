@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class FogManager : MonoBehaviour {
+public class PowFog : MonoBehaviour {
 
     [SerializeField] float duration = 10f;
+    [SerializeField] float power = 3f;
 
     void Start() {
         RenderSettings.fog = true;
@@ -18,12 +19,12 @@ public class FogManager : MonoBehaviour {
         yield return new WaitForSeconds(1.5f);
         while (timer < duration) {
             timer += Time.deltaTime;
-            RenderSettings.fogDensity = Exrp(1f, 0.05f, 3f, timer / duration);
+            RenderSettings.fogDensity = Exrp(timer, duration, power);
             yield return null;
         }
     }
 
-    float Exrp(float a, float b, float p, float t) {
-        return a + (b - a) * Mathf.Clamp01(t);
+    float Exrp(float t, float d,  float p) {
+        return 1 - Mathf.Pow(t/d, 1/p);
     }
 }
