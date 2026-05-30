@@ -3,52 +3,99 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpHeight = 2f;
-    [SerializeField] private float gravity = -9.8f;
-    [SerializeField] private float xSens = 8f;
-    [SerializeField] private float ySens = 0.5f;
-    [SerializeField] private float xClamp = 85f;
-    public Transform playerCamera;
-    float mouseX, mouseY;
-    private CharacterController characterController;
-    private Vector2 moveInput;
-    private Vector3 velocity;
-    float xRotation;
+    [Header("Movement")]
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float groundDrag = 5f;
+    [SerializeField] private float jumpForce = 12f;
+    [SerializeField] private float jumpCooldown = 0.25f;
+    [SerializeField] private float airMultiplier = 0.4f;
+    bool readyToJump = true;
+
+    [Header("Ground check")]
+    public float playerHeight;
+    public LayerMask ground;
+    bool grounded;
+
+    [Header("Slope Handling")]
+    public float maxSlopeAngle;
+    private RaycastHit slopeHit;
+
+    public Transform orientation;
+    float horizontalInput;
+    float verticalInput;
+    private Vector3 moveDir;
+    Rigidbody rb;
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
     }
+    private bool OnSlope()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+        {
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            return angle < maxSlopeAngle && angle != 0;
+        }
+        return false;
+    }
+    Vector3 GetSlopeModeDirection()
+    {
+        return Vector3.ProjectOnPlane(moveDir, slopeHit.normal).normalized;
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
+        horizontalInput = context.ReadValue<Vector2>().x;
+        verticalInput = context.ReadValue<Vector2>().y;
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && characterController.isGrounded)
+        if (context.ReadValue<float>() > 0 && grounded && readyToJump)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            readyToJump = false;
+            Jump();
+            Invoke(nameof(ResetJump), jumpCooldown);
         }
     }
-    public void OnLook(InputAction.CallbackContext context)
+    void Jump()
     {
-        mouseX = context.ReadValue<Vector2>().x * xSens;
-        mouseY = context.ReadValue<Vector2>().y * ySens;
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }
+    void ResetJump()
+    {
+        readyToJump = true;
     }
     private void Update()
     {
-        Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
-        characterController.Move(move * speed * Time.deltaTime);
-        velocity.y += gravity * Time.deltaTime;
-        characterController.Move(velocity * Time.deltaTime);
-        transform.Rotate(Vector3.up, mouseX * Time.deltaTime);
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -xClamp, xClamp);
-        Vector3 targetRotation = transform.eulerAngles;
-        targetRotation.x = xRotation;
-        playerCamera.eulerAngles = targetRotation;
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ground);
+        SpeedControl();
+        if (grounded) rb.linearDamping = groundDrag;
+        else rb.linearDamping = 0;
+    }
+    private void FixedUpdate()
+    {
+        MovePlayer();
+    }
+    private void MovePlayer()
+    {
+        moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        if (OnSlope())
+        {
+            rb.AddForce(GetSlopeModeDirection() * moveSpeed * 20f, ForceMode.Force);
+        }
+        if (grounded) rb.AddForce(moveDir.normalized * moveSpeed * 10f, ForceMode.Force);
+        else rb.AddForce(moveDir.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+    }
+    void SpeedControl()
+    {
+        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        if (flatVel.magnitude > moveSpeed)
+        {
+            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
+        }
     }
 }
