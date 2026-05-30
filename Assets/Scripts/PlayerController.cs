@@ -82,10 +82,7 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer()
     {
         moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        if (OnSlope())
-        {
-            rb.AddForce(GetSlopeModeDirection() * moveSpeed * 20f, ForceMode.Force);
-        }
+        if (OnSlope()) rb.AddForce(GetSlopeModeDirection() * moveSpeed * 20f, ForceMode.Force);
         if (grounded) rb.AddForce(moveDir.normalized * moveSpeed * 10f, ForceMode.Force);
         else rb.AddForce(moveDir.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
     }
