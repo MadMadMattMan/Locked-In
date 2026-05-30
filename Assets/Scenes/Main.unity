@@ -740,7 +740,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.57
+  near clip plane: 0.27
   far clip plane: 1000
   field of view: 110
   orthographic: 0
@@ -1101,7 +1101,7 @@ Transform:
   m_GameObject: {fileID: 438098117}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 2.22, y: 2.38, z: 0}
+  m_LocalPosition: {x: 0.38, y: 2.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1616,7 +1616,7 @@ Transform:
   m_GameObject: {fileID: 1467266761}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 3.87, y: 1.45, z: 0}
+  m_LocalPosition: {x: 3.355, y: 1.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1863,7 +1863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4796b7171197e2c47b825dcde18dc342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  moveSpeed: 7
+  moveSpeed: 5
   groundDrag: 5
   jumpForce: 12
   jumpCooldown: 0.25
