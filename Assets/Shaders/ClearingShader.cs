@@ -8,17 +8,7 @@ public class ClearingShader : MonoBehaviour {
     [SerializeField] float duration = 10;
     [Range(0, 1)][SerializeField] float strength = 0;
 
-    InputAction action;
     private void Start() {
-        action = InputSystem.actions.FindAction("Jump");
-    }
-
-    private void Update() {
-        if (action.IsPressed())
-            TriggerReveal();
-    }
-
-    private void TriggerReveal() {
         StartCoroutine(Revealer());
     }
 
