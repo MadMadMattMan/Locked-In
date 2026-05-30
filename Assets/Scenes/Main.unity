@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 23047686}
   - component: {fileID: 23047685}
   - component: {fileID: 23047688}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,7 +740,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.27
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 110
   orthographic: 0
@@ -748,7 +748,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2293,7 +2293,7 @@ GameObject:
   - component: {fileID: 1915545106}
   - component: {fileID: 1915545109}
   - component: {fileID: 1915545108}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
