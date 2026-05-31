@@ -119,6 +119,9 @@
         },
         {
             "m_Id": "ae99ba73be1d418fb807f8b96f88d2f3"
+        },
+        {
+            "m_Id": "ffb334eebee84ef2bf844c337691b886"
         }
     ],
     "m_GroupDatas": [
@@ -592,6 +595,20 @@
                 },
                 "m_SlotId": 0
             }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "ffb334eebee84ef2bf844c337691b886"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "52a46181a3b44c2e9aa5d6a6c25e61a9"
+                },
+                "m_SlotId": 1
+            }
         }
     ],
     "m_VertexContext": {
@@ -823,8 +840,8 @@
     "m_ObjectId": "0ae781ed62164e62ba6161a9651276e3",
     "m_Title": "Cutout",
     "m_Position": {
-        "x": -2375.0,
-        "y": -191.99996948242188
+        "x": -2375.000244140625,
+        "y": -192.0000457763672
     }
 }
 
@@ -919,10 +936,10 @@
     "promotedFromAssetID": "",
     "promotedFromCategoryName": "",
     "promotedOrdering": -1,
-    "m_Name": "fogLerp",
+    "m_Name": "fogLiftedness",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "fogLerp",
-    "m_DefaultReferenceName": "_fogLerp",
+    "m_RefNameGeneratedByDisplayName": "fogLiftedness",
+    "m_DefaultReferenceName": "_fogLiftedness",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -934,12 +951,12 @@
     "m_Hidden": false,
     "m_PerRendererData": false,
     "m_customAttributes": [],
-    "m_Value": 0.0,
-    "m_FloatType": 0,
+    "m_Value": 250.0,
+    "m_FloatType": 1,
     "m_LiteralFloatMode": false,
     "m_RangeValues": {
         "x": 0.0,
-        "y": 1.0
+        "y": 10000.0
     },
     "m_SliderType": 0,
     "m_SliderPower": 3.0,
@@ -1415,10 +1432,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -446.99993896484377,
-            "y": 214.99996948242188,
-            "width": 207.99996948242188,
-            "height": 302.0000305175781
+            "x": -452.0,
+            "y": 297.0,
+            "width": 208.0,
+            "height": 302.0
         }
     },
     "m_Slots": [
@@ -1907,8 +1924,8 @@
     "m_ObjectId": "60c883435ea44b77bab7e27a21fd5d50",
     "m_Title": "Fog",
     "m_Position": {
-        "x": -1289.0,
-        "y": 568.9999389648438
+        "x": -1289.0001220703125,
+        "y": 569.0
     }
 }
 
@@ -2044,7 +2061,7 @@
     "m_ShaderOutputName": "B",
     "m_StageCapability": 3,
     "m_Value": {
-        "e00": 50.0,
+        "e00": 250.0,
         "e01": 2.0,
         "e02": 2.0,
         "e03": 2.0,
@@ -3108,6 +3125,22 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "b943ac9bee4a45acb322cc1b2ec88656",
+    "m_Id": 0,
+    "m_DisplayName": "fogLiftedness",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": [],
+    "m_LiteralMode": false
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.SmoothstepNode",
     "m_ObjectId": "c1b44cebb27d473cab6cba7d74c9dad2",
     "m_Group": {
@@ -4140,5 +4173,41 @@
         "m_SerializableColors": []
     },
     "m_ScreenSpaceType": 0
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "ffb334eebee84ef2bf844c337691b886",
+    "m_Group": {
+        "m_Id": "60c883435ea44b77bab7e27a21fd5d50"
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -1264.0001220703125,
+            "y": 779.0000610351563,
+            "width": 136.0,
+            "height": 34.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "b943ac9bee4a45acb322cc1b2ec88656"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "18fa28c488194858941d778cd23746fe"
+    }
 }
 

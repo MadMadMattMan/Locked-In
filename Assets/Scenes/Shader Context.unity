@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153bd1a4be58c57438e5a1e6972d1c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  fogDensity: 1
+  fogLiftedness: 250
   playerCamera: {fileID: 2692135034445832375}
   xRayFocusObject: {fileID: 649309626}
   falloff: 0.05
@@ -2019,29 +2019,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &5691246208484285939
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5709835946593813158}
-  m_Material: {fileID: 13400000, guid: f8c6d3f0aa52617429d74da1f9cbf41d, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5709835946593813158
 GameObject:
   m_ObjectHideFlags: 0
@@ -2053,7 +2030,7 @@ GameObject:
   - component: {fileID: 6491162785718622139}
   - component: {fileID: 5183387408785492645}
   - component: {fileID: 6104567805587490591}
-  - component: {fileID: 5691246208484285939}
+  - component: {fileID: 6491162785718622140}
   m_Layer: 7
   m_Name: Hitbox
   m_TagString: Player
@@ -2158,6 +2135,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4655730729617681363}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &6491162785718622140
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5709835946593813158}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &6770645738112277624
 Transform:
   m_ObjectHideFlags: 0
