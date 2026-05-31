@@ -11,9 +11,16 @@ public class ClearingShader : MonoBehaviour {
         StartCoroutine(Revealer());
     }
 
+    public void OnTest() {
+        Debug.Log("Testing");
+        StopCoroutine(Revealer());
+        StartCoroutine(Revealer());
+    }
+
     IEnumerator Revealer() {
         float elapsedTime = 0f;
         Material objMat = GetComponent<Renderer>().material;
+        yield return new WaitForSeconds(0.5f);
         while (elapsedTime < duration) {
             elapsedTime += Time.deltaTime;
             strength = Mathf.Lerp(0, 1, elapsedTime/duration);
