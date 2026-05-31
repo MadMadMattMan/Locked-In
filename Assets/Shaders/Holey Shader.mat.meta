@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/_old/Effect Testing/Fog Lighting Settings.lighting.meta
+guid: b6029e123f35e7d42bb48b550a47f8be
+========
+guid: 9c0984944980f9848ae1c7ad820ceae5
+>>>>>>>> c6728230e248cd529754a3ab4d9dddd4dbf9dfd0:Assets/Shaders/Holey Shader.mat.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

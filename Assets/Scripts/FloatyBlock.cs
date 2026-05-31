@@ -1,6 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class FloatyBlock : MonoBehaviour
 {
     public Animator anim;
@@ -25,8 +26,20 @@ public class FloatyBlock : MonoBehaviour
     private IEnumerator ReactToLanding()
     {
         isSteppedOn = true;
+        InvokeEvent();
         anim.SetTrigger("Trigger");
         yield return new WaitForSeconds(3.5f);
         isSteppedOn = false;
+    }
+    void InvokeEvent()
+    {
+        try
+        {
+            FindAnyObjectByType<PPEvents>().GetComponent<PPEvents>().blockStepped.Invoke();
+        }
+        catch (Exception ex)
+        {
+            Debug.Log("Could not find any events to invoke: " + ex.Message);
+        }
     }
 }

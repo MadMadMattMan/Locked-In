@@ -105,3 +105,10 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+*.shadergraph
+Assets/Shaders/Depth.shadergraph.meta
+Assets/Shaders/Holy Object.shadergraph.meta
+Assets/Shaders/Depth.shadergraph.meta
+Assets/Shaders/Appear Shader.shadergraph
+Assets/Shaders/Appear Shader.shadergraph.meta
+/Assets/_Recovery
