@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class Checkpoints : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static int CheckpointNum;
+    public Checkpoint[] checkpoints;
+    public GameObject player;
+    public float yHeight;
+    private void FixedUpdate()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (player.transform.position.y < yHeight)
+        {
+            Debug.Log("Died");
+            player.transform.position = checkpoints[CheckpointNum].Position();
+        }
     }
 }
