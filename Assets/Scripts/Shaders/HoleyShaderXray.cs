@@ -2,8 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public class HoleyShaderXray : MonoBehaviour {
-    public float fogDensity = 1;
-    float fogLerp;
+    public float fogLiftedness = 250;
 
     public Camera playerCamera;
     public Transform xRayFocusObject;
@@ -26,6 +25,8 @@ public class HoleyShaderXray : MonoBehaviour {
     }
 
     private void Update() {
+        shaderMaterial.SetFloat("_fogLiftedness", fogLiftedness);
+
         bool do_xRay = false;
         if (xRayFocusObject != null) {
             targetRenderer = xRayFocusObject.GetComponent<MeshRenderer>();
@@ -38,11 +39,9 @@ public class HoleyShaderXray : MonoBehaviour {
             }
         }
 
-        if (do_xRay)
-        {
-            if (targetSize == 0f) {
+        if (do_xRay) {
+            if (targetSize == 0f)
                 setCutoutState(true);
-            }
 
             cutoutPos = playerCamera.WorldToViewportPoint(xRayFocusObject.position);
             cutoutPos.y /= (Screen.width / Screen.height);
