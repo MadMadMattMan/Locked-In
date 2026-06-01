@@ -29,13 +29,15 @@ public class HoleyShaderXray : MonoBehaviour {
 
         bool do_xRay = false;
         if (xRayFocusObject != null) {
-            targetRenderer = xRayFocusObject.GetComponent<MeshRenderer>();
+            targetRenderer = xRayFocusObject.parent.GetComponent<MeshRenderer>();
             do_xRay = targetRenderer.isVisible;
             if (do_xRay) {
                 RaycastHit hitdata;
-                Physics.Raycast(transform.position, (xRayFocusObject.position - transform.position).normalized * 100f, out hitdata);
-                do_xRay = hitdata.collider.gameObject == xRayFocusObject.gameObject;
-                Debug.DrawRay(transform.position, (xRayFocusObject.position - transform.position).normalized * 100f, Color.aliceBlue);
+                if (Physics.Raycast(transform.position, (xRayFocusObject.position - transform.position).normalized * 100f, out hitdata)) {
+                    do_xRay = hitdata.collider.gameObject == xRayFocusObject.parent.gameObject;
+                    Debug.DrawRay(transform.position, (xRayFocusObject.position - transform.position).normalized * 100f, Color.aliceBlue);
+                }
+                Debug.DrawRay(transform.position, (xRayFocusObject.position - transform.position).normalized * 100f, Color.red);
             }
         }
 
