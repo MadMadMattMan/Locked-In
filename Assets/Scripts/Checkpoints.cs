@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using KinematicCharacterController.Walkthrough.SimpleJumping;
 public class Checkpoints : MonoBehaviour
 {
     public static int CheckpointNum;
@@ -11,7 +11,7 @@ public class Checkpoints : MonoBehaviour
         if (player.transform.position.y < yHeight)
         {
             Debug.Log("Died");
-            player.transform.position = checkpoints[CheckpointNum].Position();
+            player.GetComponent<MyCharacterController>().SetPosition(checkpoints[CheckpointNum].Position());
         }
     }
 }
