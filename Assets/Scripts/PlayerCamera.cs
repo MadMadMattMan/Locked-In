@@ -12,11 +12,13 @@ public class PlayerCamera : MonoBehaviour
 
     float mouseX, mouseY;
 
-    void Start()
+    private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
     }
+
     public void OnLook(InputAction.CallbackContext context)
     {
         mouseX = context.ReadValue<Vector2>().x * sensX;
