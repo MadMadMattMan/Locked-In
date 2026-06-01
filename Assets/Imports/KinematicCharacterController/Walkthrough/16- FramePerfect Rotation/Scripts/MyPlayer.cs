@@ -20,7 +20,7 @@ namespace KinematicCharacterController.Walkthrough.SimpleJumping
         bool toggleZoom = false;
         float moveAxisX;
         float moveAxisY;
-        bool jump;
+        static public bool jump;
 
         private void Start()
         {

@@ -1,22 +1,21 @@
-using UnityEngine;
-using KinematicCharacterController.Walkthrough.SimpleJumping;
 using KinematicCharacterController;
+using KinematicCharacterController.Walkthrough.SimpleJumping;
+using UnityEngine;
+using static UnityEngine.LightAnchor;
 
-public class TrampolineJump : MonoBehaviour
-{
+public class TrampolineJump : MonoBehaviour {
     public float Force;
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.tag == "Player") {
+            MyCharacterController cc = collision.gameObject.GetComponent<MyCharacterController>();
+            KinematicCharacterController.Walkthrough.SimpleJumping.MyPlayer.jump = true;
+
+            cc.AddVelocity(Vector3.up * Force);
+        }
+    }
+    private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
-        {
-            MyCharacterController cc = collision.gameObject.GetComponent<MyCharacterController>();
-            KinematicCharacterMotor kcm = cc.Motor;
-            Vector3 forceDir = kcm.CharacterUp;
-            if (kcm.GroundingStatus.FoundAnyGround && !kcm.GroundingStatus.IsStableOnGround)
-            {
-                forceDir = kcm.GroundingStatus.GroundNormal;
-            }
-            cc.AddVelocity(forceDir * Force);
-        }
+            KinematicCharacterController.Walkthrough.SimpleJumping.MyPlayer.jump = false;
     }
 }
