@@ -1,98 +1,59 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-
-public class PlayerController : MonoBehaviour
+using KinematicCharacterController;
+public class PlayerController : MonoBehaviour, ICharacterController
 {
-    [Header("Movement")]
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float groundDrag = 5f;
-    [SerializeField] private float jumpForce = 12f;
-    [SerializeField] private float jumpCooldown = 0.25f;
-    [SerializeField] private float airMultiplier = 0.4f;
-    bool readyToJump = true;
-
-    [Header("Ground check")]
-    public float playerHeight;
-    public LayerMask ground;
-    bool grounded;
-
-    [Header("Slope Handling")]
-    public float maxSlopeAngle;
-    private RaycastHit slopeHit;
-
-    public Transform orientation;
-    float horizontalInput;
-    float verticalInput;
-    private Vector3 moveDir;
-    Rigidbody rb;
-
-    void Start()
+    public KinematicCharacterMotor Motor;
+    private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        Motor.CharacterController = this;
     }
-    private bool OnSlope()
+    void ICharacterController.AfterCharacterUpdate(float deltaTime)
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
-        {
-            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
-            return angle < maxSlopeAngle && angle != 0;
-        }
-        return false;
-    }
-    Vector3 GetSlopeModeDirection()
-    {
-        return Vector3.ProjectOnPlane(moveDir, slopeHit.normal).normalized;
+        throw new System.NotImplementedException();
     }
 
-    public void OnMove(InputAction.CallbackContext context)
+    void ICharacterController.BeforeCharacterUpdate(float deltaTime)
     {
-        horizontalInput = context.ReadValue<Vector2>().x;
-        verticalInput = context.ReadValue<Vector2>().y;
+        throw new System.NotImplementedException();
     }
-    public void OnJump(InputAction.CallbackContext context)
+
+    bool ICharacterController.IsColliderValidForCollisions(Collider coll)
     {
-        if (context.ReadValue<float>() > 0 && grounded && readyToJump)
-        {
-            readyToJump = false;
-            Jump();
-            Invoke(nameof(ResetJump), jumpCooldown);
-        }
+        throw new System.NotImplementedException();
     }
-    void Jump()
+
+    void ICharacterController.OnDiscreteCollisionDetected(Collider hitCollider)
     {
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        throw new System.NotImplementedException();
     }
-    void ResetJump()
+
+    void ICharacterController.OnGroundHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
     {
-        readyToJump = true;
+        throw new System.NotImplementedException();
     }
-    private void Update()
+
+    void ICharacterController.OnMovementHit(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, ref HitStabilityReport hitStabilityReport)
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ground);
-        SpeedControl();
-        if (grounded) rb.linearDamping = groundDrag;
-        else rb.linearDamping = 0;
+        throw new System.NotImplementedException();
     }
-    private void FixedUpdate()
+
+    void ICharacterController.PostGroundingUpdate(float deltaTime)
     {
-        MovePlayer();
+        throw new System.NotImplementedException();
     }
-    private void MovePlayer()
+
+    void ICharacterController.ProcessHitStabilityReport(Collider hitCollider, Vector3 hitNormal, Vector3 hitPoint, Vector3 atCharacterPosition, Quaternion atCharacterRotation, ref HitStabilityReport hitStabilityReport)
     {
-        moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        if (OnSlope()) rb.AddForce(GetSlopeModeDirection() * moveSpeed * 20f, ForceMode.Force);
-        if (grounded) rb.AddForce(moveDir.normalized * moveSpeed * 10f, ForceMode.Force);
-        else rb.AddForce(moveDir.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        throw new System.NotImplementedException();
     }
-    void SpeedControl()
+
+    void ICharacterController.UpdateRotation(ref Quaternion currentRotation, float deltaTime)
     {
-        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-        if (flatVel.magnitude > moveSpeed)
-        {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
-        }
+        throw new System.NotImplementedException();
+    }
+
+    void ICharacterController.UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
+    {
+        throw new System.NotImplementedException();
     }
 }
