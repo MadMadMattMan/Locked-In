@@ -17,7 +17,7 @@ namespace KinematicCharacterController.Walkthrough.MovingPlatform
     {
         public PhysicsMover Mover;
 
-        public PlayableDirector Director;
+        public Animator Animator;
 
         private Transform _transform;
 
@@ -48,10 +48,9 @@ namespace KinematicCharacterController.Walkthrough.MovingPlatform
             _transform.rotation = _rotationBeforeAnim;
         }
 
-        public void EvaluateAtTime(double time)
+        public void EvaluateAtTime(float time)
         {
-            Director.time = time % Director.duration;
-            Director.Evaluate();
+            Animator.Update(0f);
         }
     }
 }
