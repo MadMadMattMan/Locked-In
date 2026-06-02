@@ -2,10 +2,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+
 public class ButtonsManager : MonoBehaviour
 {
     public Image[] Eyes;
     public RectTransform canvasRect;
+    public Color dimAlpha, litAlpha;
     private void Update()
     {
         int eyeIndex;
@@ -14,10 +16,19 @@ public class ButtonsManager : MonoBehaviour
         if (mouseY > -18) eyeIndex = 0;
         else if (mouseY < -18 && mouseY > -90) eyeIndex = 1;
         else eyeIndex = 2;
-        for (int i = 0; i < Eyes.Length; i++)
-        {
+        SetEye(eyeIndex);
+    }
+
+    void SetEye(int target) {
+        for (int i = 0; i < Eyes.Length; i++) {
+            Image text = Eyes[i].transform.parent.GetComponent<Image>();
             Eyes[i].enabled = false;
-            if (eyeIndex == i) Eyes[i].enabled = true;
+            text.color = dimAlpha;
+
+            if (target == i) {
+                Eyes[i].enabled = true;
+                text.color = litAlpha;
+            }
         }
     }
 

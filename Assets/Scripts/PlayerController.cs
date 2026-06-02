@@ -1,5 +1,6 @@
 using UnityEngine;
 using KinematicCharacterController;
+
 public class PlayerController : MonoBehaviour, ICharacterController
 {
     public KinematicCharacterMotor Motor;
