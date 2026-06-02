@@ -36,6 +36,7 @@ namespace KinematicCharacterController.Walkthrough.MultipleMovementStates
         [Header("Air Movement")]
         public float MaxAirMoveSpeed = 10f;
         public float AirAccelerationSpeed = 5f;
+        public Vector3 AirMoveSpeedOffset = Vector3.zero;
         public float Drag = 0.1f;
 
         [Header("Jumping")]
@@ -87,6 +88,11 @@ namespace KinematicCharacterController.Walkthrough.MultipleMovementStates
             OnStateExit(tmpInitialState, newState);
             CurrentCharacterState = newState;
             OnStateEnter(newState, tmpInitialState);
+        }
+
+        public void SetAirMoveSpeedOffset(Vector3 newOffset)
+        {
+            AirMoveSpeedOffset = newOffset;
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 using UnityEngine;
 using KinematicCharacterController;
+
 public class PlayerController : MonoBehaviour, ICharacterController
 {
     public KinematicCharacterMotor Motor;
@@ -53,6 +54,11 @@ public class PlayerController : MonoBehaviour, ICharacterController
     }
 
     void ICharacterController.UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    void ICharacterController.SetAirMoveSpeedOffset(Vector3 newOffset)
     {
         throw new System.NotImplementedException();
     }

@@ -1,150 +1,115 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace KinematicCharacterController
 {
-    /// <summary>
-    /// Represents the entire state of a PhysicsMover that is pertinent for simulation.
-    /// Use this to save state or revert to past state
-    /// </summary>
+     /**
+     * Represents the entire state of a PhysicsMover that is pertinent for simulation.
+     * Use this to save state or revert to past state
+     */
     [System.Serializable]
-    public struct PhysicsMoverState
-    {
+    public struct PhysicsMoverState {
         public Vector3 Position;
         public Quaternion Rotation;
         public Vector3 Velocity;
         public Vector3 AngularVelocity;
     }
 
-    /// <summary>
-    /// Component that manages the movement of moving kinematic rigidbodies for
-    /// proper interaction with characters
-    /// </summary>
+    /**
+     * Component that manages the movement of moving kinematic rigidbodies for
+     * proper interaction with characters
+     */
     [RequireComponent(typeof(Rigidbody))]
-    public class PhysicsMover : MonoBehaviour
-    {
-        /// <summary>
-        /// The mover's Rigidbody
-        /// </summary>
+    public class PhysicsMover : MonoBehaviour {
+        // The mover's Rigidbody
         [ReadOnly]
         public Rigidbody Rigidbody;
 
-        /// <summary>
-        /// Determines if the platform moves with rigidbody.MovePosition (when true), or with rigidbody.position (when false)
-        /// </summary>
+        // Determines if the platform moves with rigidbody.MovePosition (when true), or with rigidbody.position (when false)
         public bool MoveWithPhysics = true;
 
-        /// <summary>
-        /// Index of this motor in KinematicCharacterSystem arrays
-        /// </summary>
+        // Index of this motor in KinematicCharacterSystem arrays
         [NonSerialized]
         public IMoverController MoverController;
-        /// <summary>
-        /// Remembers latest position in interpolation
-        /// </summary>
+
+        // Remembers latest position in interpolation
         [NonSerialized]
         public Vector3 LatestInterpolationPosition;
-        /// <summary>
-        /// Remembers latest rotation in interpolation
-        /// </summary>
+
+        // Remembers latest rotation in interpolation
         [NonSerialized]
         public Quaternion LatestInterpolationRotation;
-        /// <summary>
-        /// The latest movement made by interpolation
-        /// </summary>
+
+         // The latest movement made by interpolation
         [NonSerialized]
         public Vector3 PositionDeltaFromInterpolation;
-        /// <summary>
-        /// The latest rotation made by interpolation
-        /// </summary>
+
+        // The latest rotation made by interpolation
         [NonSerialized]
         public Quaternion RotationDeltaFromInterpolation;
 
-        /// <summary>
-        /// Index of this motor in KinematicCharacterSystem arrays
-        /// </summary>
+         // Index of this motor in KinematicCharacterSystem arrays
         public int IndexInCharacterSystem { get; set; }
-        /// <summary>
-        /// Remembers initial position before all simulation are done
-        /// </summary>
+        
+        // Remembers initial position before all simulation are done
         public Vector3 Velocity { get; protected set; }
-        /// <summary>
-        /// Remembers initial position before all simulation are done
-        /// </summary>
+
+        // Remembers initial position before all simulation are done
         public Vector3 AngularVelocity { get; protected set; }
-        /// <summary>
-        /// Remembers initial position before all simulation are done
-        /// </summary>
+
+        // Remembers initial position before all simulation are done
         public Vector3 InitialTickPosition { get; set; }
-        /// <summary>
-        /// Remembers initial rotation before all simulation are done
-        /// </summary>
+
+        // Remembers initial rotation before all simulation are done
         public Quaternion InitialTickRotation { get; set; }
 
-        /// <summary>
-        /// The mover's Transform
-        /// </summary>
+        // The mover's Transform
         public Transform Transform { get; private set; }
-        /// <summary>
-        /// The character's position before the movement calculations began
-        /// </summary>
+
+        // The character's position before the movement calculations began
         public Vector3 InitialSimulationPosition { get; private set; }
-        /// <summary>
-        /// The character's rotation before the movement calculations began
-        /// </summary>
+
+        // The character's rotation before the movement calculations began
         public Quaternion InitialSimulationRotation { get; private set; }
 
+        // The 
         private Vector3 _internalTransientPosition;
 
-        /// <summary>
-        /// The mover's rotation (always up-to-date during the character update phase)
-        /// </summary>
-        public Vector3 TransientPosition
-        {
-            get
-            {
+
+        // The mover's rotation (always up-to-date during the character update phase)
+        public Vector3 TransientPosition {
+            get {
                 return _internalTransientPosition;
             }
-            private set
-            {
+            private set {
                 _internalTransientPosition = value;
             }
         }
 
         private Quaternion _internalTransientRotation;
-        /// <summary>
-        /// The mover's rotation (always up-to-date during the character update phase)
-        /// </summary>
-        public Quaternion TransientRotation
-        {
-            get
-            {
+
+        // The mover's rotation (always up-to-date during the character update phase)
+        public Quaternion TransientRotation {
+            get {
                 return _internalTransientRotation;
             }
-            private set
-            {
+            private set {
                 _internalTransientRotation = value;
             }
         }
 
-
-        private void Reset()
-        {
+        private void Reset() {
             ValidateData();
         }
 
-        private void OnValidate()
-        {
+        private void OnValidate() {
             ValidateData();
         }
 
-        /// <summary>
-        /// Handle validating all required values
-        /// </summary>
-        public void ValidateData()
-        {
+         /**
+         * Handle validating all required values
+         */
+        public void ValidateData() {
             Rigidbody = gameObject.GetComponent<Rigidbody>();
 
             Rigidbody.centerOfMass = Vector3.zero;
@@ -154,19 +119,16 @@ namespace KinematicCharacterController
             Rigidbody.interpolation = RigidbodyInterpolation.None;
         }
 
-        private void OnEnable()
-        {
+        private void OnEnable() {
             KinematicCharacterSystem.EnsureCreation();
             KinematicCharacterSystem.RegisterPhysicsMover(this);
         }
 
-        private void OnDisable()
-        {
+        private void OnDisable() {
             KinematicCharacterSystem.UnregisterPhysicsMover(this);
         }
 
-        private void Awake()
-        {
+        private void Awake() {
             Transform = this.transform;
             ValidateData();
 
@@ -178,33 +140,30 @@ namespace KinematicCharacterController
             LatestInterpolationRotation = Transform.rotation;
         }
 
-        /// <summary>
-        /// Sets the mover's position directly
-        /// </summary>
-        public void SetPosition(Vector3 position)
-        {
+         /**
+         * Sets the mover's position directly
+         */
+        public void SetPosition(Vector3 position) {
             Transform.position = position;
             Rigidbody.position = position;
             InitialSimulationPosition = position;
             TransientPosition = position;
         }
 
-        /// <summary>
-        /// Sets the mover's rotation directly
-        /// </summary>
-        public void SetRotation(Quaternion rotation)
-        {
+         /**
+         * Sets the mover's rotation directly
+         */
+        public void SetRotation(Quaternion rotation) {
             Transform.rotation = rotation;
             Rigidbody.rotation = rotation;
             InitialSimulationRotation = rotation;
             TransientRotation = rotation;
         }
 
-        /// <summary>
-        /// Sets the mover's position and rotation directly
-        /// </summary>
-        public void SetPositionAndRotation(Vector3 position, Quaternion rotation)
-        {
+         /**
+         * Sets the mover's position and rotation directly
+         */
+        public void SetPositionAndRotation(Vector3 position, Quaternion rotation) {
             Transform.SetPositionAndRotation(position, rotation);
             Rigidbody.position = position;
             Rigidbody.rotation = rotation;
@@ -214,11 +173,10 @@ namespace KinematicCharacterController
             TransientRotation = rotation;
         }
 
-        /// <summary>
-        /// Returns all the state information of the mover that is pertinent for simulation
-        /// </summary>
-        public PhysicsMoverState GetState()
-        {
+         /**
+         * Returns all the state information of the mover that is pertinent for simulation
+         */
+        public PhysicsMoverState GetState() {
             PhysicsMoverState state = new PhysicsMoverState();
 
             state.Position = TransientPosition;
@@ -229,21 +187,19 @@ namespace KinematicCharacterController
             return state;
         }
 
-        /// <summary>
-        /// Applies a mover state instantly
-        /// </summary>
-        public void ApplyState(PhysicsMoverState state)
-        {
+         /**
+         * Applies a mover state instantly
+         */
+        public void ApplyState(PhysicsMoverState state) {
             SetPositionAndRotation(state.Position, state.Rotation);
             Velocity = state.Velocity;
             AngularVelocity = state.AngularVelocity;
         }
 
-        /// <summary>
-        /// Caches velocity values based on deltatime and target position/rotations
-        /// </summary>
-        public void VelocityUpdate(float deltaTime)
-        {
+         /**
+         * Caches velocity values based on deltatime and target position/rotations
+         */
+        public void VelocityUpdate(float deltaTime) {
             InitialSimulationPosition = TransientPosition;
             InitialSimulationRotation = TransientRotation;
 
@@ -256,6 +212,13 @@ namespace KinematicCharacterController
                 Quaternion rotationFromCurrentToGoal = TransientRotation * (Quaternion.Inverse(InitialSimulationRotation));
                 AngularVelocity = (Mathf.Deg2Rad * rotationFromCurrentToGoal.eulerAngles) / deltaTime;
             }
+        }
+
+        /**
+         * Applies the animation velocity to the player, useful for onExit()
+         */
+        public void ApplyPhysics() {
+
         }
     }
 }

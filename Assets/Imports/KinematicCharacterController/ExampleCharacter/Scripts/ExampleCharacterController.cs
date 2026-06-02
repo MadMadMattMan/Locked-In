@@ -512,5 +512,10 @@ namespace KinematicCharacterController.Examples
         public void OnDiscreteCollisionDetected(Collider hitCollider)
         {
         }
+
+        public void SetAirMoveSpeedOffset(Vector3 newOffset)
+        {
+            // This is called in MyCharacterController.cs
+        }
     }
 }

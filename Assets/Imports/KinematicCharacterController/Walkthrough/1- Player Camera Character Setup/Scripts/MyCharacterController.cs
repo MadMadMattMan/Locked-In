@@ -66,5 +66,9 @@ namespace KinematicCharacterController.Walkthrough.PlayerCameraCharacterSetup
         {
             // This is called by the motor when it is detecting a collision that did not result from a "movement hit".
         }
+        public void SetAirMoveSpeedOffset(Vector3 newOffset)
+        {
+            // This is called in MyCharacterController.cs
+        }
     }
 }
