@@ -877,8 +877,10 @@ namespace KinematicCharacterController
                 if (PreserveAttachedRigidbodyMomentum && _lastAttachedRigidbody != null && _attachedRigidbody != _lastAttachedRigidbody){
                     BaseVelocity += _attachedRigidbodyVelocity;
                     BaseVelocity -= tmpVelocityFromCurrentAttachedRigidbody;
-// get Relative Velocity
-// set baseMove to +- relV
+
+                    Vector3 relV = _attachedRigidbodyVelocity;
+                    float relSpeed = relV.magnitude;
+                    CharacterController.SetAirMoveSpeedOffset(relV.normalized * (relSpeed + 0.1f));
                 }
 
                 // Process additionnal Velocity from attached rigidbody
@@ -898,7 +900,7 @@ namespace KinematicCharacterController
                 _attachedRigidbody != null &&
                 _lastAttachedRigidbody == null) {
                     BaseVelocity -= Vector3.ProjectOnPlane(_attachedRigidbodyVelocity, _characterUp);
-// reset baseMove as re-attached
+                    CharacterController.SetAirMoveSpeedOffset(Vector3.zero);
                 }
                 
 

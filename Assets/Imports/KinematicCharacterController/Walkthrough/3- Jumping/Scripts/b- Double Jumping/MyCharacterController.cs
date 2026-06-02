@@ -257,5 +257,9 @@ namespace KinematicCharacterController.Walkthrough.DoubleJumping
         public void OnDiscreteCollisionDetected(Collider hitCollider)
         {
         }
+
+        public void SetAirMoveSpeedOffset(Vector3 newOffset)
+        {
+        }
     }
 }

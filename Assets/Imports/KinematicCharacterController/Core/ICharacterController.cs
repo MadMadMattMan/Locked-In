@@ -46,5 +46,8 @@ namespace KinematicCharacterController
         /// This is called when the character detects discrete collisions (collisions that don't result from the motor's capsuleCasts when moving)
         /// </summary>
         void OnDiscreteCollisionDetected(Collider hitCollider);
+
+
+        void SetAirMoveSpeedOffset(Vector3 newOffset);
     }
 }

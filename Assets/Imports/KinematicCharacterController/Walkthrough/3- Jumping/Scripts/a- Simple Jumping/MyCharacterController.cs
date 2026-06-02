@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using KinematicCharacterController;
-using System;
 
 namespace KinematicCharacterController.Walkthrough.SimpleJumping
 {
@@ -26,6 +22,7 @@ namespace KinematicCharacterController.Walkthrough.SimpleJumping
         [Header("Air Movement")]
         public float MaxAirMoveSpeed = 10f;
         public float AirAccelerationSpeed = 5f;
+        public Vector3 AirMoveSpeedOffset = Vector3.zero; 
         public float Drag = 0.1f;
 
         [Header("Jumping")]
@@ -48,7 +45,7 @@ namespace KinematicCharacterController.Walkthrough.SimpleJumping
         private float _timeSinceLastAbleToJump = 0f;
         private Vector3 _internalVelocityAdd = Vector3.zero;
 
-        private void Start()
+        private void Start() 
         {
             // Assign to motor
             Motor.CharacterController = this;
@@ -57,6 +54,11 @@ namespace KinematicCharacterController.Walkthrough.SimpleJumping
         {
             Motor.SetPosition(position);
         }
+
+        public void SetAirMoveSpeedOffset(Vector3 newOffset) { 
+            AirMoveSpeedOffset = newOffset; 
+        }
+
         public void PostInputUpdate(float deltaTime, Vector3 cameraForward)
         {
             if (FramePerfectRotation)
@@ -107,9 +109,7 @@ namespace KinematicCharacterController.Walkthrough.SimpleJumping
         /// (Called by KinematicCharacterMotor during its update cycle)
         /// This is called before the character begins its movement update
         /// </summary>
-        public void BeforeCharacterUpdate(float deltaTime)
-        {
-        }
+        public void BeforeCharacterUpdate(float deltaTime) { }
 
         /// <summary>
         /// (Called by KinematicCharacterMotor during its update cycle)
@@ -154,7 +154,7 @@ namespace KinematicCharacterController.Walkthrough.SimpleJumping
                 // Add move input
                 if (_moveInputVector.sqrMagnitude > 0f)
                 {
-                    targetMovementVelocity = _moveInputVector * MaxAirMoveSpeed;
+                    targetMovementVelocity = (_moveInputVector * MaxAirMoveSpeed) + AirMoveSpeedOffset;
 
                     // Prevent climbing on un-stable slopes with air movement
                     if (Motor.GroundingStatus.FoundAnyGround)
@@ -172,6 +172,8 @@ namespace KinematicCharacterController.Walkthrough.SimpleJumping
 
                 // Drag
                 currentVelocity *= (1f / (1f + (Drag * deltaTime)));
+                //if (AirMoveSpeedOffset.magnitude > float.Epsilon)
+                    //AirMoveSpeedOffset *= 1f / (1f + (Drag * deltaTime));
             }
 
             // Handle jumping

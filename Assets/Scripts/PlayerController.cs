@@ -57,4 +57,9 @@ public class PlayerController : MonoBehaviour, ICharacterController
     {
         throw new System.NotImplementedException();
     }
+
+    void ICharacterController.SetAirMoveSpeedOffset(Vector3 newOffset)
+    {
+        throw new System.NotImplementedException();
+    }
 }

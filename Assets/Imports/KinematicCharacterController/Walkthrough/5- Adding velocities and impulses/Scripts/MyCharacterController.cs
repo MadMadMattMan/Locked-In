@@ -284,5 +284,9 @@ namespace KinematicCharacterController.Walkthrough.AddingImpulses
         public void OnDiscreteCollisionDetected(Collider hitCollider)
         {
         }
+
+        public void SetAirMoveSpeedOffset(Vector3 newOffset)
+        {
+        }
     }
 }

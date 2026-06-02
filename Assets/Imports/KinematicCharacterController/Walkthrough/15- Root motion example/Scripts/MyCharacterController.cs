@@ -176,5 +176,9 @@ namespace KinematicCharacterController.Walkthrough.RootMotionExample
         public void OnDiscreteCollisionDetected(Collider hitCollider)
         {
         }
+
+        public void SetAirMoveSpeedOffset(Vector3 newOffset)
+        {
+        }
     }
 }

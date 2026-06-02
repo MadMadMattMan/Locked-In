@@ -294,5 +294,9 @@ namespace KinematicCharacterController.Walkthrough.LandingLeavingGround
         public void OnDiscreteCollisionDetected(Collider hitCollider)
         {
         }
+
+        public void SetAirMoveSpeedOffset(Vector3 newOffset)
+        {
+        }
     }
 }

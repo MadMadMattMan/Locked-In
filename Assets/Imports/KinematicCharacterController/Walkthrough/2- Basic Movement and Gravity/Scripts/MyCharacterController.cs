@@ -70,6 +70,8 @@ namespace KinematicCharacterController.Walkthrough.BasicMovement
         {
         }
 
+        public void SetAirMoveSpeedOffset(Vector3 newOffset) { }
+
         /// <summary>
         /// (Called by KinematicCharacterMotor during its update cycle)
         /// This is where you tell your character what its rotation should be right now. 
