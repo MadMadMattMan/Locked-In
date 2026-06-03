@@ -46,20 +46,18 @@ public class ButtonsManager : MonoBehaviour
     }
 
     public void StartGame() {
-
+        Debug.Log("Game Started");
+        GameObject.FindWithTag("Game Manager").GetComponent<GameManager>().ProgressGame();
     }
 
-    public void UnPause() {
-        
-    }
-
-    public void Pause() {
-
-    }
-
-    public void Options() {
+    public void ToggleOptions() {
         Debug.LogWarning("yet to implement");
     }
+
+    public void TogglePause() {
+        Debug.LogWarning("yet to implement");
+    }
+
     public void Quit() {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
