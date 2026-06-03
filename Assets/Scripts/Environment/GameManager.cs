@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour
     public void ProgressGame(int steps) {
         state += steps - 1;
 
-        Debug.Log($"Progressing game from: {state}");
         if (state == GameState.Title) {
             Debug.Log("Title -> Tutorial");
             StartCoroutine(IEIntroFade(5f));
@@ -56,7 +55,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("Tutorial -> Puzzle1");
             StartBearTracking((int)state);
             // play voicelines
-            // highlight bear (w/ cam tracking)
         }
 
         state++;
@@ -91,7 +89,7 @@ public class GameManager : MonoBehaviour
         StopCoroutine("IEWaitForBearScreen");
         BearObject.transform.position = BearPositions[i].position;
         BearObject.transform.rotation = BearPositions[i].rotation;
-        StartCoroutine(IEWaitForBearScreen(5f));
+        StartCoroutine(IEWaitForBearScreen(1000f));
     }
     // public method for Fog Expanding
     public void FadeFogTo(FogExpander fe) {

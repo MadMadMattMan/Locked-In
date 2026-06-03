@@ -2388,7 +2388,6 @@ GameObject:
   - component: {fileID: 1800263954}
   - component: {fileID: 1800263952}
   - component: {fileID: 1800263953}
-  - component: {fileID: 1800263955}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -2450,10 +2449,10 @@ MonoBehaviour:
   MaxStepHeight: 0.5
   AllowSteppingWithoutStableGrounding: 0
   MinRequiredStepDepth: 0.1
-  LedgeAndDenivelationHandling: 1
-  MaxStableDistanceFromLedge: 0.5
+  LedgeAndDenivelationHandling: 0
+  MaxStableDistanceFromLedge: 0
   MaxVelocityForLedgeSnap: 0
-  MaxStableDenivelationAngle: 180
+  MaxStableDenivelationAngle: 1
   InteractiveRigidbodyHandling: 1
   RigidbodyInteractionType: 0
   SimulatedCharacterMass: 1
@@ -2488,33 +2487,6 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1800263955
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800263951}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 1
 --- !u!4 &1800263956
 Transform:
   m_ObjectHideFlags: 0
@@ -2524,7 +2496,7 @@ Transform:
   m_GameObject: {fileID: 1800263951}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.01, y: 1.7080001, z: 0.18}
+  m_LocalPosition: {x: -5.01, y: 1.708001, z: 0.18000007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2953,6 +2925,7 @@ GameObject:
   - component: {fileID: 8868924151409466317}
   - component: {fileID: 8868924151409466318}
   - component: {fileID: 8868924151409466316}
+  - component: {fileID: 8868924151409466319}
   m_Layer: 6
   m_Name: cart2
   m_TagString: Untagged
@@ -3173,6 +3146,7 @@ GameObject:
   - component: {fileID: 6977748262913242573}
   - component: {fileID: 6977748262913242574}
   - component: {fileID: 6977748262913242572}
+  - component: {fileID: 6977748262913242575}
   m_Layer: 6
   m_Name: cart3
   m_TagString: Untagged
@@ -3408,6 +3382,7 @@ GameObject:
   - component: {fileID: 8373555444206347935}
   - component: {fileID: 8373555444206347936}
   - component: {fileID: 8373555444206347934}
+  - component: {fileID: 8373555444206347937}
   m_Layer: 6
   m_Name: cart4
   m_TagString: Untagged
@@ -3430,6 +3405,7 @@ GameObject:
   - component: {fileID: 5870208037532534621}
   - component: {fileID: 5870208037532534622}
   - component: {fileID: 5870208037532534620}
+  - component: {fileID: 5870208037532534623}
   m_Layer: 6
   m_Name: cart1
   m_TagString: Untagged
@@ -3514,6 +3490,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KinematicCharacterController.Walkthrough.MovingPlatform.MyMovingPlatform
   Mover: {fileID: 5870208037532534620}
   Animator: {fileID: 919132148294806105}
+--- !u!114 &5870208037532534623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5870208037532534618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72974dd33b429cf48b667caf4e28c415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  objectVelocity: {x: 0, y: 0, z: 0}
+  pastPos: {x: 0, y: 0, z: 0}
 --- !u!114 &6126470134002918596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3675,6 +3665,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KinematicCharacterController.Walkthrough.MovingPlatform.MyMovingPlatform
   Mover: {fileID: 6977748262913242572}
   Animator: {fileID: 919132148294806105}
+--- !u!114 &6977748262913242575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2891746525806427188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72974dd33b429cf48b667caf4e28c415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  objectVelocity: {x: 0, y: 0, z: 0}
+  pastPos: {x: 0, y: 0, z: 0}
 --- !u!4 &7154688119708507923
 Transform:
   m_ObjectHideFlags: 0
@@ -3959,6 +3963,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KinematicCharacterController.Walkthrough.MovingPlatform.MyMovingPlatform
   Mover: {fileID: 8373555444206347934}
   Animator: {fileID: 919132148294806105}
+--- !u!114 &8373555444206347937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5466898857732418036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72974dd33b429cf48b667caf4e28c415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  objectVelocity: {x: 0, y: 0, z: 0}
+  pastPos: {x: 0, y: 0, z: 0}
 --- !u!4 &8868924151409466314
 Transform:
   m_ObjectHideFlags: 0
@@ -4052,6 +4070,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KinematicCharacterController.Walkthrough.MovingPlatform.MyMovingPlatform
   Mover: {fileID: 8868924151409466316}
   Animator: {fileID: 919132148294806105}
+--- !u!114 &8868924151409466319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302295342115643793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72974dd33b429cf48b667caf4e28c415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  objectVelocity: {x: 0, y: 0, z: 0}
+  pastPos: {x: 0, y: 0, z: 0}
 --- !u!4 &9078949021663687478
 Transform:
   m_ObjectHideFlags: 0
@@ -4086,5 +4118,5 @@ SceneRoots:
   - {fileID: 327268854}
   - {fileID: 141341057}
   - {fileID: 693598617}
-  - {fileID: 1800263956}
   - {fileID: 1576026127}
+  - {fileID: 1800263956}
