@@ -172,8 +172,6 @@ namespace KinematicCharacterController.Walkthrough.SimpleJumping
 
                 // Drag
                 currentVelocity *= (1f / (1f + (Drag * deltaTime)));
-                //if (AirMoveSpeedOffset.magnitude > float.Epsilon)
-                    //AirMoveSpeedOffset *= 1f / (1f + (Drag * deltaTime));
             }
 
             // Handle jumping

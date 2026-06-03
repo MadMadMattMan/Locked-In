@@ -877,10 +877,7 @@ namespace KinematicCharacterController
                 if (PreserveAttachedRigidbodyMomentum && _lastAttachedRigidbody != null && _attachedRigidbody != _lastAttachedRigidbody){
                     BaseVelocity += _attachedRigidbodyVelocity;
                     BaseVelocity -= tmpVelocityFromCurrentAttachedRigidbody;
-
-                    Vector3 relV = _attachedRigidbodyVelocity;
-                    float relSpeed = relV.magnitude;
-                    CharacterController.SetAirMoveSpeedOffset(relV.normalized * (relSpeed + 0.1f));
+                    CharacterController.SetAirMoveSpeedOffset(_attachedRigidbodyVelocity);
                 }
 
                 // Process additionnal Velocity from attached rigidbody
@@ -898,11 +895,8 @@ namespace KinematicCharacterController
                 GroundingStatus.GroundCollider.attachedRigidbody &&
                 GroundingStatus.GroundCollider.attachedRigidbody == _attachedRigidbody &&
                 _attachedRigidbody != null &&
-                _lastAttachedRigidbody == null) {
+                _lastAttachedRigidbody == null)
                     BaseVelocity -= Vector3.ProjectOnPlane(_attachedRigidbodyVelocity, _characterUp);
-                    CharacterController.SetAirMoveSpeedOffset(Vector3.zero);
-                }
-                
 
                 // Movement from Attached Rigidbody
                 if (_attachedRigidbodyVelocity.sqrMagnitude > 0f) {
@@ -916,6 +910,7 @@ namespace KinematicCharacterController
                         _transientPosition += _attachedRigidbodyVelocity * deltaTime;
 
                     _isMovingFromAttachedRigidbody = false;
+                    CharacterController.SetAirMoveSpeedOffset(_attachedRigidbodyVelocity);
                 }
                 #endregion
             }
@@ -2119,24 +2114,19 @@ namespace KinematicCharacterController
         
         /// Get true linear velocity (taking into account rotational velocity) on a given point of a rigidbody
         
-        public void GetVelocityFromRigidbodyMovement(Rigidbody interactiveRigidbody, Vector3 atPoint, float deltaTime, out Vector3 linearVelocity, out Vector3 angularVelocity)
-        {
-            if (deltaTime > 0f)
-            {
+        public void GetVelocityFromRigidbodyMovement(Rigidbody interactiveRigidbody, Vector3 atPoint, float deltaTime, out Vector3 linearVelocity, out Vector3 angularVelocity) {
+            if (deltaTime > 0f) {
                 linearVelocity = interactiveRigidbody.linearVelocity;
                 angularVelocity = interactiveRigidbody.angularVelocity;
-                if(interactiveRigidbody.isKinematic)
-                {
+                if(interactiveRigidbody.isKinematic) {
                     PhysicsMover physicsMover = interactiveRigidbody.GetComponent<PhysicsMover>();
-                    if (physicsMover)
-                    {
+                    if (physicsMover) {
                         linearVelocity = physicsMover.Velocity;
                         angularVelocity = physicsMover.AngularVelocity;
                     }
                 }
 
-                if (angularVelocity != Vector3.zero)
-                {
+                if (angularVelocity != Vector3.zero) {
                     Vector3 centerOfRotation = interactiveRigidbody.transform.TransformPoint(interactiveRigidbody.centerOfMass);
 
                     Vector3 centerOfRotationToPoint = atPoint - centerOfRotation;
@@ -2145,8 +2135,7 @@ namespace KinematicCharacterController
                     linearVelocity += (finalPointPosition - atPoint) / deltaTime;
                 }
             }
-            else
-            {
+            else {
                 linearVelocity = default;
                 angularVelocity = default;
                 return;

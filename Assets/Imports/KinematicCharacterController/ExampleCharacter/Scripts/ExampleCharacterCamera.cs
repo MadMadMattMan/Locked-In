@@ -55,15 +55,13 @@ namespace KinematicCharacterController.Examples
 
         private const int MaxObstructions = 32;
 
-        void OnValidate()
-        {
+        void OnValidate() {
             DefaultDistance = Mathf.Clamp(DefaultDistance, MinDistance, MaxDistance);
             DefaultVerticalAngle = Mathf.Clamp(DefaultVerticalAngle, MinVerticalAngle, MaxVerticalAngle);
         }
 
-        void Awake()
-        {
-            Transform = this.transform;
+        void Awake() {
+            Transform = Camera.transform;
 
             _currentDistance = DefaultDistance;
             TargetDistance = _currentDistance;
@@ -74,25 +72,18 @@ namespace KinematicCharacterController.Examples
         }
 
         // Set the transform that the camera will orbit around
-        public void SetFollowTransform(Transform t)
-        {
+        public void SetFollowTransform(Transform t) {
             FollowTransform = t;
             PlanarDirection = FollowTransform.forward;
             _currentFollowPosition = FollowTransform.position;
         }
 
-        public void UpdateWithInput(float deltaTime, float zoomInput, Vector3 rotationInput)
-        {
-            if (FollowTransform)
-            {
+        public void UpdateWithInput(float deltaTime, float zoomInput, Vector3 rotationInput) {
+            if (FollowTransform) {
                 if (InvertX)
-                {
                     rotationInput.x *= -1f;
-                }
                 if (InvertY)
-                {
                     rotationInput.y *= -1f;
-                }
 
                 // Process rotation input
                 Quaternion rotationFromInput = Quaternion.Euler(FollowTransform.up * (rotationInput.x * RotationSpeed));

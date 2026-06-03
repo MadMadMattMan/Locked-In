@@ -4,6 +4,8 @@ using UnityEngine;
 public class HoleyShaderXray : MonoBehaviour {
     public float fogLiftedness = 250;
 
+    public bool dithered = false;
+    public Material shaderMaterial;
     public Camera playerCamera;
     public Transform xRayFocusObject;
     public float falloff = 0.1f;
@@ -14,21 +16,16 @@ public class HoleyShaderXray : MonoBehaviour {
 
     public float changeTime = 0.1f;
 
-    Material shaderMaterial;
     Renderer targetRenderer;
 
     Vector2 cutoutPos = new Vector2();
 
-
-    private void Start() {
-        shaderMaterial = GetComponent<Renderer>().material;
-    }
-
     private void Update() {
         shaderMaterial.SetFloat("_fogLiftedness", fogLiftedness);
+        shaderMaterial.SetInt("_useDither", dithered ? 1 : 0);
 
         bool do_xRay = false;
-        if (xRayFocusObject != null) {
+        if (xRayFocusObject) {
             targetRenderer = xRayFocusObject.parent.GetComponent<MeshRenderer>();
             do_xRay = targetRenderer.isVisible;
             if (do_xRay) {
