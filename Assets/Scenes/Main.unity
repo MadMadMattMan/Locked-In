@@ -1699,7 +1699,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: af2004660db3b3d49bb40ee2d3f5dd93, type: 3}
+  m_Resource: {fileID: 8300000, guid: 6ba9723375b950c4eb9299e88b713ffd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -3720,6 +3720,7 @@ MonoBehaviour:
   OrientationSharpness: 5
   MaxAirMoveSpeed: 5
   AirAccelerationSpeed: 5
+  AirMoveSpeedOffset: {x: 0, y: 0, z: 0}
   Drag: 0.1
   AllowJumpingWhenSliding: 1
   JumpSpeed: 10
