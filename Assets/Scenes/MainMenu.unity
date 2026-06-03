@@ -296,12 +296,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779868122}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 784.0326, y: -0.00003, z: 1867.0403}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 670.3517, y: -225.25603, z: 2548.8606}
+  m_LocalScale: {x: 1.3651878, y: 1.3651878, z: 1.3651878}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1529687741}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1016821965
 GameObject:
@@ -926,7 +926,7 @@ GameObject:
   - component: {fileID: 1529687739}
   - component: {fileID: 1529687738}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Main Menu Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1013,6 +1013,7 @@ RectTransform:
   - {fileID: 361523716}
   - {fileID: 1096623712}
   - {fileID: 2021486773}
+  - {fileID: 779868124}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1651,4 +1652,3 @@ SceneRoots:
   - {fileID: 1547002797}
   - {fileID: 1529687741}
   - {fileID: 1039005229}
-  - {fileID: 779868124}

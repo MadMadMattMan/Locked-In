@@ -70,6 +70,6 @@ Material:
     - _Cutout_Falloff: {r: 0, g: 0, b: 0, a: 0}
     - _Cutout_Size: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _Cutout_pos: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - _cutoutPos: {r: 0.5157203, g: 0.28221977, b: 0, a: 0}
+    - _cutoutPos: {r: 0.447265, g: 0.0065223575, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

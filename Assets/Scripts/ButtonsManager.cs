@@ -45,17 +45,22 @@ public class ButtonsManager : MonoBehaviour
         return localPoint;
     }
 
-    public void StartGame()
-    {
-        SceneManager.LoadScene(1);
+    public void StartGame() {
+
     }
 
-    public void Options()
-    {
+    public void UnPause() {
+        
+    }
+
+    public void Pause() {
+
+    }
+
+    public void Options() {
         Debug.LogWarning("yet to implement");
     }
-    public void Quit()
-    {
+    public void Quit() {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
