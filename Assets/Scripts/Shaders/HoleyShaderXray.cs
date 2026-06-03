@@ -38,7 +38,8 @@ public class HoleyShaderXray : MonoBehaviour {
             }
         }
 
-        if (do_xRay) {
+        if (do_xRay)
+        {
             if (targetSize == 0f)
                 setCutoutState(true);
 
@@ -52,8 +53,9 @@ public class HoleyShaderXray : MonoBehaviour {
             shaderMaterial.SetFloat("_cutoutFalloff", falloff);
             return;
         }
-        else if (targetSize == maxSize)
+        else if (targetSize == maxSize) {
             setCutoutState(false);
+        }
 
         shaderMaterial.SetFloat("_cutoutSize", 0f);
     }
@@ -66,7 +68,7 @@ public class HoleyShaderXray : MonoBehaviour {
     IEnumerator changeCutoutState(bool state) {
         targetSize = state ? maxSize : 0f;
         float start = state ? 0f : maxSize;
-        float timer = state ? (currentSize / maxSize) : ((maxSize / currentSize)-1)*-1;
+        float timer = state ? (currentSize / maxSize) : (maxSize/(maxSize-currentSize));
         timer *= changeTime;
 
         while (timer < changeTime) {
