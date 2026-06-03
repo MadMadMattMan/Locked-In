@@ -1204,7 +1204,6 @@ MonoBehaviour:
   BearPositions: []
   titleCanvas: {fileID: 1334860568}
   introDoor: {fileID: 919132147607504664}
-  voidMaintainer: {fileID: 239707198}
   state: 0
   showBear: 0
 --- !u!1 &785998764
@@ -3323,14 +3322,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115927535}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.9105567, z: -0, w: 0.41338438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: -0.3, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 543450653676867635}
   m_Father: {fileID: 543450652068142498}
-  m_LocalEulerAnglesHint: {x: 0, y: -131.165, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2126034835
 GameObject:
   m_ObjectHideFlags: 0
