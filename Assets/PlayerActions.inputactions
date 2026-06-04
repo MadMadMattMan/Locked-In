@@ -43,9 +43,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ToggleZoom",
+                    "name": "TogglePerson",
                     "type": "Button",
                     "id": "24bc9659-5aef-4089-9bd2-2f59760e5ddc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "2303acf0-d84e-4223-bcc7-67dffd5cc343",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Zoom",
+                    "type": "Button",
+                    "id": "933a6dbc-6ebc-4a90-89ad-d6ac0d996cde",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -254,22 +272,55 @@
                 {
                     "name": "",
                     "id": "1ab2d9de-0cdd-4813-9dba-781e05eb9567",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/backslash",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ToggleZoom",
+                    "action": "TogglePerson",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "758b8abd-b430-4688-885b-60f0f6b65264",
+                    "id": "39e8f1c1-7c4c-43a3-abef-5c8108fae400",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1ef4590-7019-47e8-945e-a3f8e5e1cb6f",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "37b5bbc8-b585-4743-803d-93e0dd5e28ab",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4817ce8c-e49a-4b47-8680-a6125dd60d3b",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ToggleZoom",
+                    "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

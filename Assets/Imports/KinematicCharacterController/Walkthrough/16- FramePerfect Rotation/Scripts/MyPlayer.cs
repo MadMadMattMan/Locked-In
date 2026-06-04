@@ -13,6 +13,7 @@ namespace KinematicCharacterController.Walkthrough.SimpleJumping
         public float YSens;
         float mouseLookAxisUp;
         float mouseLookAxisRight;
+        bool togglePerson = false;
         bool toggleZoom = false;
         float moveAxisX;
         float moveAxisY;
@@ -21,7 +22,7 @@ namespace KinematicCharacterController.Walkthrough.SimpleJumping
         private void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
 
             // Tell camera to follow transform
             OrbitCamera.SetFollowTransform(CameraFollowPoint);
@@ -51,10 +52,13 @@ namespace KinematicCharacterController.Walkthrough.SimpleJumping
             mouseLookAxisRight = context.ReadValue<Vector2>().x * XSens;
             mouseLookAxisUp = context.ReadValue<Vector2>().y * YSens;
         }
-        public void OnToggleZoom(InputAction.CallbackContext context)
+        public void OnTogglePerson(InputAction.CallbackContext context)
         {
-            if (context.action.WasPerformedThisFrame()) toggleZoom = true;
-            else toggleZoom = false;
+            if (context.action.WasPerformedThisFrame()) togglePerson = !togglePerson;
+        }
+        public void OnZoom(InputAction.CallbackContext context)
+        {
+            if (context.action.WasPerformedThisFrame()) toggleZoom = !toggleZoom;
         }
         public void OnJump(InputAction.CallbackContext context)
         {
@@ -73,7 +77,9 @@ namespace KinematicCharacterController.Walkthrough.SimpleJumping
             }
 
             // Input for zooming the camera (disabled in WebGL because it can cause problems)
-            float scrollInput = 0f;
+            float scrollInput;
+            if (togglePerson) scrollInput = 1f;
+            else scrollInput = 0f;
 #if UNITY_WEBGL
         scrollInput = 0f;
 #endif
@@ -82,10 +88,12 @@ namespace KinematicCharacterController.Walkthrough.SimpleJumping
             OrbitCamera.UpdateWithInput(Time.deltaTime, scrollInput, lookInputVector);
 
             // Handle toggling zoom level
-            if (toggleZoom)
+            if (togglePerson)
             {
                 OrbitCamera.TargetDistance = (OrbitCamera.TargetDistance == 0f) ? OrbitCamera.DefaultDistance : 0f;
             }
+
+            OrbitCamera.SetFOV(toggleZoom);
         }
 
         private void HandleCharacterInput()

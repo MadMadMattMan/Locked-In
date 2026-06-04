@@ -38,6 +38,12 @@ namespace KinematicCharacterController.Examples
         public float ObstructionSharpness = 10000f;
         public List<Collider> IgnoredColliders = new List<Collider>();
 
+        [Header("Zoom Settings")]
+        [SerializeField] private float zoomSensitivity = 10f;
+        [SerializeField] private float smoothTime = 0.15f;
+        [SerializeField] private float minZoom = 20f;
+        [SerializeField] private float maxZoom = 75f;
+
         public Transform Transform { get; private set; }
         public Transform FollowTransform { get; private set; }
 
@@ -55,6 +61,10 @@ namespace KinematicCharacterController.Examples
 
         private const int MaxObstructions = 32;
 
+        private float targetZoom;
+        private float currentVelocity = 0f;
+        private float scrollInput = 0f;
+
         void OnValidate() {
             DefaultDistance = Mathf.Clamp(DefaultDistance, MinDistance, MaxDistance);
             DefaultVerticalAngle = Mathf.Clamp(DefaultVerticalAngle, MinVerticalAngle, MaxVerticalAngle);
@@ -69,6 +79,9 @@ namespace KinematicCharacterController.Examples
             _targetVerticalAngle = 0f;
 
             PlanarDirection = Vector3.forward;
+
+            targetZoom = Camera.fieldOfView;
+            maxZoom = Camera.fieldOfView;
         }
 
         // Set the transform that the camera will orbit around
@@ -78,6 +91,11 @@ namespace KinematicCharacterController.Examples
             _currentFollowPosition = FollowTransform.position;
         }
 
+        public void SetFOV(bool toZoom) 
+        { 
+            if (toZoom) targetZoom = minZoom;
+            else targetZoom = maxZoom;
+        }
         public void UpdateWithInput(float deltaTime, float zoomInput, Vector3 rotationInput) {
             if (FollowTransform) {
                 if (InvertX)
@@ -165,6 +183,13 @@ namespace KinematicCharacterController.Examples
                 // Apply position
                 Transform.position = targetPosition;
             }
+
+            // Subtracting inputs zoom in when scrolling up
+            targetZoom -= scrollInput * zoomSensitivity;
+            // Bound target within limits
+            targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
+
+            Camera.fieldOfView = Mathf.SmoothDamp(Camera.fieldOfView, targetZoom, ref currentVelocity, smoothTime);
         }
     }
 }
