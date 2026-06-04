@@ -5,6 +5,7 @@ using System;
 
 public class Subtitles : MonoBehaviour
 {
+    public Transform subtitleCanvas;
     public GameObject SubtitlePrefab;
     public Font Font;
     public int FontSize;
@@ -35,7 +36,7 @@ public class Subtitles : MonoBehaviour
     IEnumerator SubtitleRoutine(char letter, float delayTime, float offset, float timeToDisplayLetter)
     {
         yield return new WaitForSeconds(delayTime);
-        GameObject subtitle = Instantiate(SubtitlePrefab, transform);
+        GameObject subtitle = Instantiate(SubtitlePrefab, subtitleCanvas);
         subtitle.GetComponent<SubtitlePrefab>().SetUptime(timeToDisplayLetter);
         Text textComponent = subtitle.GetComponent<Text>();
         subtitle.GetComponent<RectTransform>().localPosition += new Vector3(offset, 0, 0);
