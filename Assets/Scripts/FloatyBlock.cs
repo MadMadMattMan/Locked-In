@@ -10,6 +10,8 @@ public class FloatyBlock : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        if (!anim)
+            anim = transform.parent.GetComponent<Animator>();
     }
 
     private void OnCollisionEnter(Collision collision)

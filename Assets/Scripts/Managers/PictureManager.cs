@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class PictureManager : MonoBehaviour {
     public GameObject completePicture;
@@ -10,8 +11,10 @@ public class PictureManager : MonoBehaviour {
 
     private void Start() {
         completePicture.SetActive(false);
-        foreach (GameObject p in rippedPieces)
-            p.SetActive(false);
+        foreach (GameObject p in rippedPieces) {
+            if (p != rippedPieces.Last())
+                p.SetActive(false);
+        }
     }
 
     private void Update() {

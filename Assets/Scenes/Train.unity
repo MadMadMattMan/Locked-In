@@ -1334,7 +1334,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450652285645026}
-  - component: {fileID: 919132148294806105}
   m_Layer: 6
   m_Name: Train Object
   m_TagString: Untagged
@@ -1342,28 +1341,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &919132148294806105
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148294806104}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3759c7ab28ad7904fa31153283c3a2de, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 1
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!33 &1070658778668740185
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1943,7 +1920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KinematicCharacterController.Walkthrough.MovingPlatform.MyMovingPlatform
   Mover: {fileID: 5870208037532534620}
-  Animator: {fileID: 919132148294806105}
+  Animator: {fileID: 0}
 --- !u!114 &6126470134002918596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2104,7 +2081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KinematicCharacterController.Walkthrough.MovingPlatform.MyMovingPlatform
   Mover: {fileID: 6977748262913242572}
-  Animator: {fileID: 919132148294806105}
+  Animator: {fileID: 0}
 --- !u!4 &7154688119708507923
 Transform:
   m_ObjectHideFlags: 0
@@ -2388,7 +2365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KinematicCharacterController.Walkthrough.MovingPlatform.MyMovingPlatform
   Mover: {fileID: 8373555444206347934}
-  Animator: {fileID: 919132148294806105}
+  Animator: {fileID: 0}
 --- !u!4 &8868924151409466314
 Transform:
   m_ObjectHideFlags: 0
@@ -2481,7 +2458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KinematicCharacterController.Walkthrough.MovingPlatform.MyMovingPlatform
   Mover: {fileID: 8868924151409466316}
-  Animator: {fileID: 919132148294806105}
+  Animator: {fileID: 0}
 --- !u!4 &9078949021663687478
 Transform:
   m_ObjectHideFlags: 0
