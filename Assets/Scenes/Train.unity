@@ -895,7 +895,7 @@ Transform:
   m_GameObject: {fileID: 945045493}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.09371, y: 0.56433, z: 0.88286}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1041,65 +1041,6 @@ MonoBehaviour:
   Character: {fileID: 1800263952}
   XSens: 0.2
   YSens: 0.2
---- !u!1 &1671632978
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1671632979}
-  - component: {fileID: 1671632980}
-  m_Layer: 6
-  m_Name: Train Animator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1671632979
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1671632978}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2004295577023497988}
-  - {fileID: 5195184735755249351}
-  - {fileID: 8868924151409466314}
-  - {fileID: 2860862315237902570}
-  - {fileID: 3328508632154504000}
-  m_Father: {fileID: 543450652285645026}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1671632980
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1671632978}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1800263951
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,11 +1276,15 @@ Transform:
   m_GameObject: {fileID: 919132148294806104}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 6.09371, y: -0.56433, z: -0.88286}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1671632979}
+  - {fileID: 2004295577023497988}
+  - {fileID: 5195184735755249351}
+  - {fileID: 8868924151409466314}
+  - {fileID: 2860862315237902570}
+  - {fileID: 3328508632154504000}
   m_Father: {fileID: 945045494}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &753407201350893131
@@ -1370,6 +1315,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450652285645026}
+  - component: {fileID: 919132148294806105}
   m_Layer: 6
   m_Name: Train Object
   m_TagString: Untagged
@@ -1377,6 +1323,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &919132148294806105
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148294806104}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5b1c9ce725aaf3c4d88d9f998d705efc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!33 &1070658778668740185
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1451,7 +1419,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1671632979}
+  m_Father: {fileID: 543450652285645026}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!23 &2099840329144021018
 MeshRenderer:
@@ -1595,11 +1563,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7013706, y: -0.08988497, z: 0.08988497, w: 0.7013706}
   m_LocalPosition: {x: 6.4440002, y: 0.045, z: 0.003000006}
-  m_LocalScale: {x: 0.30000004, y: 0.30000004, z: 0.30000004}
+  m_LocalScale: {x: 0.30000007, y: 0.3, z: 0.30000004}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1677264336645558772}
-  m_Father: {fileID: 1671632979}
+  m_Father: {fileID: 543450652285645026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 14.606}
 --- !u!1 &2891746525806427188
 GameObject:
@@ -1641,11 +1609,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.9942538, y: -0.10704908, z: -0, w: 0}
   m_LocalPosition: {x: 8.412001, y: -0.042, z: -0.06000001}
-  m_LocalScale: {x: 0.30000004, y: 0.30000004, z: 0.30000004}
+  m_LocalScale: {x: 0.3, y: 0.30000007, z: 0.30000004}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9078949021663687478}
-  m_Father: {fileID: 1671632979}
+  m_Father: {fileID: 543450652285645026}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 12.29}
 --- !u!23 &3695666859470749840
 MeshRenderer:
@@ -1834,7 +1802,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7693535712852057110}
-  m_Father: {fileID: 1671632979}
+  m_Father: {fileID: 543450652285645026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5466898857732418036
 GameObject:
@@ -2412,11 +2380,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.6973787, y: 0.11688882, z: -0.11688882, w: 0.6973787}
   m_LocalPosition: {x: 4.563, y: 0.08400002, z: -0.0059999973}
-  m_LocalScale: {x: 0.30000004, y: 0.3, z: 0.29999998}
+  m_LocalScale: {x: 0.30000004, y: 0.30000004, z: 0.29999998}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7374409254730234079}
-  m_Father: {fileID: 1671632979}
+  m_Father: {fileID: 543450652285645026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -19.03}
 --- !u!64 &8868924151409466315
 MeshCollider:
