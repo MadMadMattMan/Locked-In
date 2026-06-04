@@ -34,15 +34,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Test",
-                    "type": "Button",
-                    "id": "0590785e-d8f1-45b5-b48d-6885c8c7d674",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "TogglePerson",
                     "type": "Button",
                     "id": "24bc9659-5aef-4089-9bd2-2f59760e5ddc",
@@ -64,6 +55,15 @@
                     "name": "Zoom",
                     "type": "Button",
                     "id": "933a6dbc-6ebc-4a90-89ad-d6ac0d996cde",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "6520ebf8-537b-4377-818a-226fb4bff7da",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -260,17 +260,6 @@
                 },
                 {
                     "name": "",
-                    "id": "8c8978a6-6b36-4ef0-89ad-c512b21749be",
-                    "path": "<Keyboard>/slash",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Test",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "1ab2d9de-0cdd-4813-9dba-781e05eb9567",
                     "path": "<Keyboard>/backslash",
                     "interactions": "",
@@ -321,6 +310,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ac5c883f-1879-42cd-b87d-c0a533cde0b2",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b205689a-8dfc-4956-9423-ba99a72d13fc",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
