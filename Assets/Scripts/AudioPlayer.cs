@@ -4,6 +4,7 @@ public class AudioPlayer : MonoBehaviour
 {
     AudioManager audioManager;
     [SerializeField] AudioClip voiceLine;
+    [SerializeField] string voiceLineText;
     [SerializeField] bool playOnce = false;
     bool played;
 
@@ -16,7 +17,7 @@ public class AudioPlayer : MonoBehaviour
             if (playOnce && played)
                 return;
             played = true;
-            audioManager.Queue(voiceLine);
+            audioManager.Queue(voiceLine, voiceLineText);
         }
     }
 }
