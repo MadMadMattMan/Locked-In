@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Game Manager
+  - Audio Manager
   layers:
   - Default
   - TransparentFX
