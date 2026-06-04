@@ -165,5 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioPlayer
   voiceLine: {fileID: 8300000, guid: 0d34bec7275a24c01ad3357381be92cb, type: 3}
-  voiceLineText: 
+  voiceLineText: You'd get frustrated, you'd try force it, and every time you got
+    stuck you'd look at me like it was somehow my fault, I don't know, I think one
+    day you just stopped trying to fight it
   playOnce: 1

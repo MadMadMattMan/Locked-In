@@ -165,5 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioPlayer
   voiceLine: {fileID: 8300000, guid: fb1b0a25d2b664dee9a885532e7ba5d3, type: 3}
-  voiceLineText: 
+  voiceLineText: Remember when i got you that xylophone for your 5th birthday, you
+    loved that thing... so much. Unfortunatly it did take you a while to get a hang
+    of that one. But you never cared, you loved making noise
   playOnce: 1

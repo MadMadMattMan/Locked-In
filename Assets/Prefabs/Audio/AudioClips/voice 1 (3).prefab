@@ -165,5 +165,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioPlayer
   voiceLine: {fileID: 8300000, guid: 22d3d2be57bce4555b0913c55e2c9b1e, type: 3}
-  voiceLineText: 
+  voiceLineText: That's who you were, you always got back up
   playOnce: 1

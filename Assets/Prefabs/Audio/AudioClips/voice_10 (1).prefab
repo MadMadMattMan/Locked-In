@@ -165,5 +165,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioPlayer
   voiceLine: {fileID: 8300000, guid: 0d34bec7275a24c01ad3357381be92cb, type: 3}
-  voiceLineText: 
+  voiceLineText: You'd get frustrated
   playOnce: 1

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Subtitles))] 
 public class AudioManager : MonoBehaviour {
 
     public float minPauseGap = 1f;

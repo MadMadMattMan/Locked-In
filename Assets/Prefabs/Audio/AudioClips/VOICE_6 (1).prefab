@@ -165,5 +165,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioPlayer
   voiceLine: {fileID: 8300000, guid: 8deb84b78a2d24ad0a72a7af28061d34, type: 3}
-  voiceLineText: 
+  voiceLineText: Then you. stopped, i still never figured out why y'know
   playOnce: 1

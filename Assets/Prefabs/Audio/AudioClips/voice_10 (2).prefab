@@ -165,5 +165,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioPlayer
   voiceLine: {fileID: 8300000, guid: 3058e8e5021ff4a1580a28d68d405be6, type: 3}
-  voiceLineText: 
+  voiceLineText: you followed the path and suddenly it made sense to you, you were
+    so proud that day
   playOnce: 1

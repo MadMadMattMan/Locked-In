@@ -165,5 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioPlayer
   voiceLine: {fileID: 8300000, guid: f5676f4715ca4404fafafa6701275a4e, type: 3}
-  voiceLineText: 
-  playOnce: 1
+  voiceLineText: 'You loved discoving new sounds, then i bought you that guitar for
+    your.. 7th birthday. Eventually you asked for lessons and then came the compotitions,
+    you were so sure you were going to become the next big thing '
+  playOnce: 0
