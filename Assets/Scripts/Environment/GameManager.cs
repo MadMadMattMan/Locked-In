@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         if (state == GameState.Title) {
             Debug.Log("Title -> Tutorial");
-            StartCoroutine(IEIntroFade(5f));
+            StartCoroutine(IEIntroFade(1.5f));
             BearObject.transform.position = BearPositions[(int)state].position;
         }
         if (state == GameState.Tutorial) {
