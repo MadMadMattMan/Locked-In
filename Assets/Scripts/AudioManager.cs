@@ -31,7 +31,7 @@ public class AudioManager : MonoBehaviour {
 
     IEnumerator IEClipWaiter(AudioClip clip, string subtitle) {
         audioSource.PlayOneShot(clip);
-        subtitleManager.SubtitleText(subtitle);
+        subtitleManager.SubtitleText(subtitle, clip.length - clip.length/5);
         waiting = false;
         yield return new WaitForSeconds(clip.length + minPauseGap);
         waiting = true;

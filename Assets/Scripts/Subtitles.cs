@@ -10,15 +10,13 @@ public class Subtitles : MonoBehaviour
     public Font Font;
     public int FontSize;
     public float AnimationOffset;
-    public float TimeToDisplayText;
     public int WPM;
-    public void SubtitleText(string display)
+    public void SubtitleText(string display, float TimeToDisplayText)
     {
         int length = display.Length;
         int wordCount = GetWordCount(display);
         float time = TimeToDisplayText / length;
         float currentTime = time;
-        float timeToDisplayLetter = WPM / 60f * wordCount;
         GUIStyle style = new GUIStyle();
         style.font = Font;
         style.fontSize = FontSize;
@@ -28,7 +26,7 @@ public class Subtitles : MonoBehaviour
         {
             Vector2 size = style.CalcSize(new GUIContent(c.ToString()));
             float offset = currentPos + size.x/2;
-            StartCoroutine(SubtitleRoutine(c, currentTime, offset, timeToDisplayLetter));
+            StartCoroutine(SubtitleRoutine(c, currentTime, offset, TimeToDisplayText));
             currentTime += time;
             currentPos += size.x;
         }
