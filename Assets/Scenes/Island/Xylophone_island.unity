@@ -8997,7 +8997,7 @@ Transform:
   m_GameObject: {fileID: 8723455516178430914}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6512098, y: 9.7, z: 4.3527923}
+  m_LocalPosition: {x: 14.8, y: 165.56, z: 25.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9158,7 +9158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153bd1a4be58c57438e5a1e6972d1c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  fogLiftedness: 20
+  fogLiftedness: 30
   dithered: 1
   shaderMaterial: {fileID: 2100000, guid: 9c0984944980f9848ae1c7ad820ceae5, type: 2}
   playerCamera: {fileID: 215551053675196659}
