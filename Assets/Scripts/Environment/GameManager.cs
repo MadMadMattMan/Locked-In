@@ -159,7 +159,12 @@ public class GameManager : MonoBehaviour
     }
     // public method for Fog Expanding
     public void FadeFogTo(FogExpander fe) {
-        StartCoroutine(IEFadeFog(fe));
+        StartCoroutine(IEFadeFog(fe, 0));
+    }
+    public void FadeFogTo(float i)
+    {
+        FogExpander fe = new FogExpander();
+        StartCoroutine(IEFadeFog(fe, i));
     }
 
     /**
@@ -182,16 +187,20 @@ public class GameManager : MonoBehaviour
         doorAnimatior.SetTrigger("Open");
     }
     // fog fade called by FogExpander
-    IEnumerator IEFadeFog(FogExpander fe) {
+    IEnumerator IEFadeFog(FogExpander fe, float i) {
         float startFog = playerShader.fogLiftedness;
+        float tf = i==0 ? fe.targetFog : i;
+        float d = i==0 ? fe.fadeTime : 2;
         float time = 0;
         while (time < fe.fadeTime) {
             time += Time.deltaTime;
-            playerShader.fogLiftedness = Mathf.Lerp(startFog, fe.targetFog, time/fe.fadeTime);
+            playerShader.fogLiftedness = Mathf.Lerp(startFog, tf, time/d);
             yield return null;
         }
-        playerShader.fogLiftedness = fe.targetFog;
-        Destroy(fe.gameObject);
+        playerShader.fogLiftedness = tf;
+        
+        if (i==0) 
+            Destroy(fe.gameObject);
     }
     // waits for bear to appear on screen
     IEnumerator IEWaitForBearScreen(float screenTime) {
