@@ -10,8 +10,8 @@ public class Checkpoints : MonoBehaviour
     {
         if (player.transform.position.y < yHeight)
         {
-            Debug.Log("Died");
             player.GetComponent<MyCharacterController>().SetPosition(checkpoints[CheckpointNum].Position());
+            FindAnyObjectByType<PPEvents>().GetComponent<PPEvents>().onDeath.Invoke();
         }
     }
 }
