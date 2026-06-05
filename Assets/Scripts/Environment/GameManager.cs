@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Picture Refs")]
     public List<GameObject> rippedPictures;
+    public PictureManager pictureManager;
 
     [Header("Bear Refs")]
     public GameObject BearObject;
@@ -26,15 +27,17 @@ public class GameManager : MonoBehaviour
     // Private Player refs
     HoleyShaderXray playerShader;
 
+    public List<Animator> trainAnimators;
+
     [Header("Tracking vars")]
     public GameState state = 0;
     public bool showBear = false;
     public int orderedCollectedPictures = 0;
-
+    public bool[] placed = new bool[5];
     private void Start() {
         // setup local refs
         playerShader = PlayerCameraContainer.GetComponentInChildren<HoleyShaderXray>();
-        bearXrayTarget = BearObject.transform.GetChild(0);
+        //bearXrayTarget = BearObject.transform.GetChild(0);
 
         // defaults
         playerShader.fogLiftedness = fogStart;
@@ -49,11 +52,11 @@ public class GameManager : MonoBehaviour
         if (state == GameState.Title) {
             Debug.Log("Title -> Tutorial");
             StartCoroutine(IEIntroFade(1.5f));
-            BearObject.transform.position = BearPositions[(int)state].position;
+            //BearObject.transform.position = BearPositions[(int)state].position;
         }
         if (state == GameState.Tutorial) {
             Debug.Log("Tutorial -> Puzzle1");
-            StartBearTracking((int)state);
+            //StartBearTracking((int)state);
             // play voicelines
         }
 
@@ -80,6 +83,23 @@ public class GameManager : MonoBehaviour
             ProgressGame(diff);
     }
 
+    // Called when picture collected
+    public void PlacePicture() {
+        int i = 0;
+        for (; i < 6; i++) {
+            if (!placed[i]) {
+                placed[i] = true;
+                break;
+            }
+        }
+        pictureManager.PlacePiece(i);
+    }
+
+    public void StartTrain() {
+        foreach(Animator a in trainAnimators) {
+            a.SetTrigger("Start");
+        }
+    }
 
     /**
      *  Coroutine Helpers

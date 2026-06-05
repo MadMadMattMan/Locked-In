@@ -1645,6 +1645,7 @@ GameObject:
   - component: {fileID: 7280221957338285306}
   - component: {fileID: 8225300892780329834}
   - component: {fileID: 7363153929512279877}
+  - component: {fileID: 8225300892780329835}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: MainCamera
@@ -1909,6 +1910,26 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2151898398210234025}
   m_Enabled: 1
+--- !u!114 &8225300892780329835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2151898398210234025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 153bd1a4be58c57438e5a1e6972d1c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HoleyShaderXray
+  fogLiftedness: 20
+  dithered: 0
+  shaderMaterial: {fileID: 2100000, guid: 9c0984944980f9848ae1c7ad820ceae5, type: 2}
+  playerCamera: {fileID: 5229979952719140985}
+  xRayFocusObject: {fileID: 0}
+  falloff: 0.1
+  maxSize: 5
+  changeTime: 0.1
 --- !u!23 &9104790164215500979
 MeshRenderer:
   m_ObjectHideFlags: 0

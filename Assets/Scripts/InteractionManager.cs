@@ -19,8 +19,11 @@ public class InteractionManager : MonoBehaviour
                 return;
             }
         }
-        Eyeball.SetActive(false);
-        interactedObj = null;
+        else
+        {
+            Eyeball.SetActive(false);
+            interactedObj = null;
+        }
         Debug.DrawRay(ray.origin, ray.direction * range, Color.red);
     }
     public void OnInteract(InputAction.CallbackContext context)
@@ -32,6 +35,7 @@ public class InteractionManager : MonoBehaviour
     }
     public void Interaction()
     {
-
+        if (interactedObj)
+            interactedObj.OnInteract();
     }
 }
