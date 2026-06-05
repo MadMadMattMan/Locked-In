@@ -47,7 +47,7 @@ public class ButtonsManager : MonoBehaviour
 
     public void StartGame() {
         Debug.Log("Game Started");
-        GameObject.FindWithTag("Game Manager").GetComponent<GameManager>().ProgressGame(1);
+        GameObject.FindWithTag("Game Manager").GetComponent<GameManager>().ProgressGame();
     }
 
     public void ToggleOptions() {

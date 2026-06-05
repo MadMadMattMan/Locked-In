@@ -22,7 +22,9 @@ public class GameManager : MonoBehaviour
     [Header("Title Refs")]
     public GameObject titleCanvas;
     public float fogStart = 3.5f;
-    public Animator doorAnimatior;    
+    public Animator doorAnimatior;
+
+    public GameObject p1, p2, p3, p4, p5, tutorial;
 
     // Private Player refs
     HoleyShaderXray playerShader;
@@ -38,6 +40,11 @@ public class GameManager : MonoBehaviour
         // setup local refs
         playerShader = PlayerCameraContainer.GetComponentInChildren<HoleyShaderXray>();
         //bearXrayTarget = BearObject.transform.GetChild(0);
+        p1.SetActive(false);
+        p2.SetActive(false);
+        p3.SetActive(false);
+        p4.SetActive(false);
+        p5.SetActive(false);
 
         // defaults
         playerShader.fogLiftedness = fogStart;
@@ -46,18 +53,59 @@ public class GameManager : MonoBehaviour
     }
     
     // Progresses the game by n steps
-    public void ProgressGame(int steps) {
-        state += steps - 1;
-
+    public void ProgressGame() {
         if (state == GameState.Title) {
             Debug.Log("Title -> Tutorial");
             StartCoroutine(IEIntroFade(1.5f));
-            //BearObject.transform.position = BearPositions[(int)state].position;
+            tutorial.SetActive(true);
         }
         if (state == GameState.Tutorial) {
             Debug.Log("Tutorial -> Puzzle1");
-            //StartBearTracking((int)state);
-            // play voicelines
+            p1.SetActive(true);
+            p2.SetActive(false);
+            p3.SetActive(false);
+            p4.SetActive(false);
+            p5.SetActive(false);
+        }
+        if (state == GameState.Puzzle1) {
+            Debug.Log("Puzzle1 -> Puzzle2");
+            p1.SetActive(false);
+            p2.SetActive(true);
+            p3.SetActive(false);
+            p4.SetActive(false);
+            p5.SetActive(false);
+        }
+        if (state == GameState.Puzzle2)
+        {
+            p1.SetActive(false);
+            p2.SetActive(false);
+            p3.SetActive(true);
+            p4.SetActive(false);
+            p5.SetActive(false);
+        }
+        if (state == GameState.Puzzle3)
+        {
+            p1.SetActive(false);
+            p2.SetActive(false);
+            p3.SetActive(false);
+            p4.SetActive(true);
+            p5.SetActive(false);
+        }
+        if (state == GameState.Puzzle4)
+        {
+            p1.SetActive(false);
+            p2.SetActive(false);
+            p3.SetActive(false);
+            p4.SetActive(false);
+            p5.SetActive(true);
+        }
+        if (state == GameState.Ending)
+        {
+            p1.SetActive(false);
+            p2.SetActive(false);
+            p3.SetActive(false);
+            p4.SetActive(false);
+            p5.SetActive(false);
         }
 
         state++;
@@ -67,20 +115,18 @@ public class GameManager : MonoBehaviour
     // Called when picture collected
     public void CollectPicture(int photoID) {
         // set collected picture to collected
+        ProgressGame();
+
         rippedPictures[photoID].SetActive(false);
         rippedPictures[photoID] = null;
+
         // count collected in order
         int i = 0;
         foreach (GameObject go in rippedPictures) {
             if (go)
-                return;
+                break;
             i++;
         }
-
-        // steps to do
-        int diff = i - orderedCollectedPictures;
-        if (diff > 0)
-            ProgressGame(diff);
     }
 
     // Called when picture collected
@@ -170,7 +216,5 @@ public enum GameState {
     Puzzle2,
     Puzzle3,
     Puzzle4,
-    TrainStation,
-    Train,
     Ending
 }

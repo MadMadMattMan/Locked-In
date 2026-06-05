@@ -5,6 +5,7 @@ using System.Linq;
 public class PictureManager : MonoBehaviour {
     public GameObject completePicture;
     public List<GameObject> rippedPieces;
+    public Animator ani;
 
     int n = 0;
     public bool place = false;
@@ -31,5 +32,6 @@ public class PictureManager : MonoBehaviour {
             if (!p.activeSelf)
                 return;
         completePicture.SetActive(true);
+        ani.SetTrigger("Fall");
     }
 }
