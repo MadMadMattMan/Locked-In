@@ -64,12 +64,12 @@ Material:
     - _cutoutFalloff: 0.05
     - _cutoutSize: 0
     - _fogLerp: 0
-    - _fogLiftedness: 0.1
+    - _fogLiftedness: 15
     - _useDither: 1
     m_Colors:
     - _Cutout_Falloff: {r: 0, g: 0, b: 0, a: 0}
     - _Cutout_Size: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _Cutout_pos: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - _cutoutPos: {r: 0.6101328, g: -0.016670465, b: 0, a: 0}
+    - _cutoutPos: {r: 0.993409, g: 0.99462, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
