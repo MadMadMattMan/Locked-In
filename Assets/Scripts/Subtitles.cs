@@ -15,7 +15,7 @@ public class Subtitles : MonoBehaviour
     {
         int length = display.Length;
         int wordCount = GetWordCount(display);
-        float time = TimeToDisplayText / length;
+        float time = TimeToDisplayText / length / 2f;
         float currentTime = time;
         GUIStyle style = new GUIStyle();
         style.font = Font;
