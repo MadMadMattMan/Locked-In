@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/_old/MainMenu.unity
-    guid: b138757da9885bc4f8d70b37febef2c8
+    path: Assets/Scenes/The Game.unity
+    guid: c7dfe519142d3be47aab8c59536a696c
   - enabled: 1
-    path: Assets/Scenes/Main.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Hospital.unity
+    guid: 8204bdabdad808345aa572ac4b05694b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 914cdfd75eda44d408acaba47d1e9964, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
