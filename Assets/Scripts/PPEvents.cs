@@ -8,6 +8,7 @@ public class PPEvents : MonoBehaviour
     public Volume volume;
     public UnityEvent blockStepped;
     public UnityEvent keyStepped;
+    public UnityEvent onDeath;
     private ChromaticAberration ca;
     private LensDistortion ld;
     void Start()
@@ -16,6 +17,7 @@ public class PPEvents : MonoBehaviour
         {
             ca.intensity.overrideState = true;
             blockStepped.AddListener(StartCA);
+            onDeath.AddListener(StartBL);
         }
         if (volume.profile.TryGet<LensDistortion>(out ld))
         {
@@ -25,6 +27,7 @@ public class PPEvents : MonoBehaviour
     }
     public void StartCA() { StartCoroutine(nameof(ChromaticAberrationEffect)); }
     public void StartLD() { StartCoroutine(nameof(LensDistortionEffect)); }
+    public void StartBL() { StartCoroutine(nameof(BloomEffect)); }
     private IEnumerator ChromaticAberrationEffect()
     {
         float timer = 1f;
@@ -46,6 +49,19 @@ public class PPEvents : MonoBehaviour
             yield return null;
         }
         ld.intensity.value = 0f;
+        yield return null;
+    }
+    private IEnumerator BloomEffect()
+    {
+        Debug.Log("Called");
+
+        float timer = 2f;
+        while (timer > 0f)
+        {
+            timer -= Time.deltaTime;
+            ca.intensity.value = Mathf.Clamp01(timer);
+            yield return null;
+        }
         yield return null;
     }
 }
